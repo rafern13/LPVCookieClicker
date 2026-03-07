@@ -4,17 +4,29 @@
  */
 package cookieclickercosmico;
 
+import cookieclickercosmico.Entidades.GameTimer;
+
 /**
  *
  * @author sowbo
  */
 public class CookieClickerCosmico {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        GameState meuJogo = SaveManager.carregar();
+
+        java.awt.EventQueue.invokeLater(() -> {
+            MainFrame telaPrincipal = new MainFrame(meuJogo);
+            telaPrincipal.setVisible(true);
+            
+            GameTimer relogio = new GameTimer(meuJogo, telaPrincipal);
+            relogio.iniciar();
+        });
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            SaveManager.salvar(meuJogo);
+        }));
     }
+    
     
 }

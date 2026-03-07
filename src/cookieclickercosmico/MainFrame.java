@@ -12,11 +12,28 @@ public class MainFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
+    private GameState estado;
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame(GameState estado) {
+        this.estado = estado;
         initComponents();
+        
+        
+        
+        // 1. Criamos as telas passando o GameState para elas!
+        // (Você vai precisar arrumar o construtor dessas telas depois para receber o estado)
+        cookieclickercosmico.Telas.TelaInicio telaInicio = new cookieclickercosmico.Telas.TelaInicio(); 
+        cookieclickercosmico.Telas.TelaLoja telaLoja = new cookieclickercosmico.Telas.TelaLoja();
+        cookieclickercosmico.Telas.TelaConquistas telaConquistas = new cookieclickercosmico.Telas.TelaConquistas();
+        cookieclickercosmico.Telas.TelaPerfil telaPerfil = new cookieclickercosmico.Telas.TelaPerfil();
+
+        // 2. Adicionamos elas no seu painelCartas (o baralho), dando o apelido de cada uma
+        painelCartas.add(telaInicio, "cardInicio");
+        painelCartas.add(telaLoja, "cardLoja");
+        painelCartas.add(telaConquistas, "cardConquistas");
+        painelCartas.add(telaPerfil, "cardPerfil");
     }
 
     /**
@@ -28,49 +45,42 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        painelCartas = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout painelCartasLayout = new javax.swing.GroupLayout(painelCartas);
+        painelCartas.setLayout(painelCartasLayout);
+        painelCartasLayout.setHorizontalGroup(
+            painelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 246, Short.MAX_VALUE)
+        );
+        painelCartasLayout.setVerticalGroup(
+            painelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 166, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelCartas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(148, 148, 148))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelCartas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel painelCartas;
     // End of variables declaration//GEN-END:variables
 }
