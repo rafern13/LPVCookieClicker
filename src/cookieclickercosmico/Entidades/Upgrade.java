@@ -3,11 +3,11 @@ package cookieclickercosmico.Entidades;
 import cookieclickercosmico.GameState;
 import java.io.Serializable;
 
-public class Upgrade implements Serializable {
+public abstract class Upgrade implements Serializable {
     private String nome;
     private String descricao;
     private double custo;
-    private double bonusMultiplicador; // Quanto ele vai somar no seu clique
+    protected double bonusMultiplicador; // Quanto ele vai somar no seu clique
     private boolean comprado;
 
     public Upgrade(String nome, String descricao, double custo, double bonusMultiplicador) {
@@ -29,6 +29,8 @@ public class Upgrade implements Serializable {
         }
         return false; // Falhou (sem cookies ou já comprado)
     }
+    
+    public abstract void aplicarEfeito(GameState estado);
 
     // Getters para a interface (TelaLoja) ler os dados
     public String getNome() { return nome; }

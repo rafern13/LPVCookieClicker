@@ -17,6 +17,7 @@ public class Achievement implements Serializable {
 
     // Método que checa se a meta foi batida
     public boolean verificarDesbloqueio(double totalHistorico) {
+        
         if (!desbloqueada && totalHistorico >= metaDeCookies) {
             this.desbloqueada = true;
             return true; // Retorna true apenas no exato momento que desbloqueia
@@ -28,4 +29,9 @@ public class Achievement implements Serializable {
     public String getNome() { return nome; }
     public String getDescricao() { return descricao; }
     public boolean isDesbloqueada() { return desbloqueada; }
+
+    public void setDesbloqueada(boolean desbloqueada) {
+        this.desbloqueada = desbloqueada;
+    }
+    
 }

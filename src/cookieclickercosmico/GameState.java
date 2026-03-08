@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import cookieclickercosmico.Entidades.GameItem;
 import cookieclickercosmico.Entidades.Upgrade;
+import cookieclickercosmico.Entidades.UpgradeAlienTurbinado;
+import cookieclickercosmico.Entidades.UpgradeEntropiaCosmica;
+import cookieclickercosmico.Entidades.UpgradeFornoNuclear;
+
 import java.io.Serializable;
 
 
@@ -39,12 +43,23 @@ public class GameState implements Serializable {
         unidades.add(new GameItem("Misturador Quântico", 1100, 8.0));
         unidades.add(new GameItem("Compressor de Buraco Negro", 12000, 47.0));
         
-        // add os upgrames disponiveis
-        upgradesDisponiveis.add(new Upgrade("Dedo de Ouro", "Aumenta o clique em +1", 500, 1.0));
-        upgradesDisponiveis.add(new Upgrade("Mouse Laser", "Aumenta o clique em +5", 5000, 5.0));
+        upgradesDisponiveis.add(new UpgradeAlienTurbinado());
+        upgradesDisponiveis.add(new UpgradeFornoNuclear());
+        upgradesDisponiveis.add(new UpgradeEntropiaCosmica());        
         
         conquistas.add(new Achievement("Confeiteiro de mão cheia", "Prepare 100.000 cookies!", 100000));
         conquistas.add(new Achievement("O Início", "Prepare seus primeiros 100 cookies!", 100));
+        conquistas.add(new Achievement("Velocidade da Luz", "Alcance uma produção de 100 cookies por segundo.", 0));
+    }
+    
+    // Método auxiliar para contar unidades
+    public int getQuantidadeDeItem(String nomeItem) {
+        for (GameItem item : unidades) {
+            if (item.getNome().equalsIgnoreCase(nomeItem)) {
+                return item.getQuantidade();
+            }
+        }
+        return 0;
     }
    
     public double getProducaoPorSegundo() {
@@ -90,12 +105,81 @@ public class GameState implements Serializable {
     public double getTotalCookies() {
         return totalCookies;
     }
+
+    public List<Achievement> getConquistas() {
+        return conquistas;
+    }
+
+    public List<GameItem> getListaUnidades() {
+        return unidades;
+    }
     
+ 
+
+    // Tenta efetuar a compra de uma unidade
+    public boolean comprarItem(String nomeDoItem) {
+        
+        for (cookieclickercosmico.Entidades.GameItem item : unidades) {
+            
+            if (item.getNome().equals(nomeDoItem)) {
+                
+                double preco = item.getCustoAtual();
+                
+                if (this.totalCookies >= preco) {
+                    
+                    this.totalCookies -= preco;
+                    
+                    item.comprar();
+                    
+                    return true; 
+                    
+                } else {
+                    return false; 
+                }
+            }
+        }
+        
+        // Se chegou aqui, é porque o item com esse nome não existe na lista
+        return false; 
+    }
+    
+    public boolean comprarUpgrade(String nomeDoUpgrade) {
+        for (cookieclickercosmico.Entidades.Upgrade upgrade : upgradesDisponiveis) {
+            
+            if (upgrade.getNome().equals(nomeDoUpgrade)) {
+                
+                double preco = upgrade.getCusto();
+                
+                // Verifica se tem saldo E se o upgrade já não foi comprado
+                if (this.totalCookies >= preco && !upgrade.isComprado()) {
+                    
+                    this.totalCookies -= preco;
+                    
+                    // Passa o motor do jogo (this) para o upgrade fazer a mágica dele
+                    upgrade.comprar(this); 
+                    
+                    return true; 
+                    
+                } else {
+                    return false; 
+                }
+            }
+        }
+        
+        return false; 
+    }    
     private void verificarConquistas() {
         for (Achievement c : conquistas) {
+            // Lógica para Velocidade da Luz
+            if (c.getNome().equals("Velocidade da Luz")) {
+                if (getProducaoPorSegundo() >= 100.0) {
+                    c.setDesbloqueada(true);
+                    System.out.println("CONQUISTA DESBLOQUEADA: " + c.getNome());
+                }
+            }
+            
             if (c.verificarDesbloqueio(this.totalCookiesHistorico)) {
                 System.out.println("Nova Conquista Desbloqueada: " + c.getNome());
-                // Aqui você pode disparar um popup na tela do jogador!
             }
         }
     }

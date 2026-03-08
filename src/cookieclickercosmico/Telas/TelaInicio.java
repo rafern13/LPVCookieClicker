@@ -67,6 +67,7 @@ public class TelaInicio extends javax.swing.JPanel {
 
     private void botaoCliqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCliqueActionPerformed
         estado.clicarNoCookie();
+        atualizarTela();
     }//GEN-LAST:event_botaoCliqueActionPerformed
 
     // Método que será chamado a cada 1 segundo

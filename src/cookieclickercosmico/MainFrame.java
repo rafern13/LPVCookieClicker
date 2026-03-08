@@ -72,6 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnConquistas.addActionListener(e -> {
             java.awt.CardLayout cl = (java.awt.CardLayout)(painelCartas.getLayout());
             cl.show(painelCartas, "cardConquistas"); 
+            telaConquistas.atualizarConquistas(); // Força a atualização visual
         });
 
         btnLoja.addActionListener(e -> {

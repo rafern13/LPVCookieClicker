@@ -4,6 +4,7 @@
  */
 package cookieclickercosmico.Telas;
 
+import cookieclickercosmico.Entidades.Achievement;
 import cookieclickercosmico.GameState;
 
 /**
@@ -17,6 +18,43 @@ public class TelaConquistas extends javax.swing.JPanel {
     public TelaConquistas(GameState estado) {
         this.estado = estado;
         initComponents();
+        atualizarConquistas();
+    }
+    
+    public void atualizarConquistas() {
+        painelContainerConquistas.removeAll();
+        painelContainerConquistas.setLayout(new javax.swing.BoxLayout(painelContainerConquistas, javax.swing.BoxLayout.Y_AXIS));
+
+        for (Achievement c : estado.getConquistas()) {
+            javax.swing.JPanel painelC = new javax.swing.JPanel(new java.awt.BorderLayout());
+            painelC.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.GRAY));
+            javax.swing.JLabel lbl = new javax.swing.JLabel();
+
+
+            // Estilo visual: Se alcançada fica dourada/branca, se não, fica cinza escuro
+            if (c.isDesbloqueada()) {
+                painelC.setBackground(new java.awt.Color(255, 215, 0)); // Cor Dourada
+                lbl.setText("<html><body style='width: 200px; padding: 5px;'>" +
+                           "<b style='color: black;'>🏆 " + c.getNome() + "</b><br>" +
+                           "<i style='color: #333;'>" + c.getDescricao() + "</i>" +
+                           "</body></html>");            
+            } else {
+                painelC.setBackground(new java.awt.Color(45, 45, 45)); // Cinza Escuro (Bloqueado)
+                lbl.setText("<html><body style='width: 200px; padding: 5px;'>" +
+                           "<b style='color: #888;'>🔒 " + c.getNome() + "</b><br>" +
+                           "<i style='color: #666;'>" + c.getDescricao() + "</i>" +
+                           "</body></html>");
+            } 
+
+            lbl.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+            painelC.add(lbl, java.awt.BorderLayout.CENTER);
+            painelContainerConquistas.add(painelC);
+            painelContainerConquistas.add(javax.swing.Box.createRigidArea(new java.awt.Dimension(0, 5))); // Espaçamento
+        }
+
+        painelContainerConquistas.revalidate();
+        painelContainerConquistas.repaint();
     }
 
     /**
@@ -28,19 +66,35 @@ public class TelaConquistas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        painelContainerConquistas = new javax.swing.JPanel();
+
+        painelContainerConquistas.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout painelContainerConquistasLayout = new javax.swing.GroupLayout(painelContainerConquistas);
+        painelContainerConquistas.setLayout(painelContainerConquistasLayout);
+        painelContainerConquistasLayout.setHorizontalGroup(
+            painelContainerConquistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        painelContainerConquistasLayout.setVerticalGroup(
+            painelContainerConquistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(painelContainerConquistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(painelContainerConquistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel painelContainerConquistas;
     // End of variables declaration//GEN-END:variables
 }
