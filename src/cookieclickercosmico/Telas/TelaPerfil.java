@@ -4,18 +4,21 @@
  */
 package cookieclickercosmico.Telas;
 
+import cookieclickercosmico.GameState;
+
 /**
  *
  * @author sowbo
  */
 public class TelaPerfil extends javax.swing.JPanel {
 
-    /**
-     * Creates new form TelaPerfil
-     */
-    public TelaPerfil() {
+    private GameState estado; // Variável para guardar o motor do jogo
+
+    public TelaPerfil(GameState estado) {
+        this.estado = estado;
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -1,6 +1,8 @@
 package cookieclickercosmico.Entidades;
 
-public class Achievement {
+import java.io.Serializable;
+
+public class Achievement implements Serializable {
     private String nome;
     private String descricao;
     private double metaDeCookies;

@@ -4,19 +4,21 @@
  */
 package cookieclickercosmico.Telas;
 
+import cookieclickercosmico.GameState;
+import cookieclickercosmico.componentes.BotaoRedondo;
+
 /**
  *
  * @author sowbo
  */
 public class TelaInicio extends javax.swing.JPanel {
 
-    /**
-     * Creates new form TelaInicio
-     */
-    public TelaInicio() {
+   private GameState estado; // Variável para guardar o motor do jogo
+
+    public TelaInicio(GameState estado) {
+        this.estado = estado;
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +28,75 @@ public class TelaInicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botaoClique = new BotaoRedondo("CLIQUE!");
+        lblSaldoCookies = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(0, 0, 0));
+
+        botaoClique.setBackground(new java.awt.Color(0, 0, 0));
+        botaoClique.setForeground(new java.awt.Color(255, 255, 255));
+        botaoClique.setText("CLIQUE!");
+        botaoClique.addActionListener(this::botaoCliqueActionPerformed);
+
+        lblSaldoCookies.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoClique)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSaldoCookies, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSaldoCookies, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                .addComponent(botaoClique, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(328, 328, 328))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoCliqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCliqueActionPerformed
+        estado.clicarNoCookie();
+    }//GEN-LAST:event_botaoCliqueActionPerformed
+
+    // Método que será chamado a cada 1 segundo
+    public void atualizarTela() {
+        // Pega o total do motor do jogo e formata
+        String valorFormatado = formatarCookies(estado.getTotalCookies());
+        
+        // Substitua 'lblSaldoCookies' pelo nome da variável do seu texto no NetBeans
+        lblSaldoCookies.setText(valorFormatado + " cookies (" + estado.getProducaoPorSegundo() + " Cookies/s)");
+        
+        System.out.println(valorFormatado);
+    }
+
+    // A MÁGICA DA FORMATAÇÃO (12300 vira 12.3K)
+    private String formatarCookies(double valor) {
+        if (valor >= 1_000_000_000) {
+            return String.format("%.2fB", valor / 1_000_000_000.0).replace(",", ".");
+        }
+        if (valor >= 1_000_000) {
+            return String.format("%.2fM", valor / 1_000_000.0).replace(",", ".");
+        }
+        if (valor >= 1_000) {
+            return String.format("%.1fK", valor / 1_000.0).replace(",", ".");
+        }
+        // Se for menor que 1000, mostra o número inteiro normal
+        return String.format("%.0f", Math.floor(valor));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoClique;
+    private javax.swing.JLabel lblSaldoCookies;
     // End of variables declaration//GEN-END:variables
 }

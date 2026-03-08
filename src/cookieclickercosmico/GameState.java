@@ -24,7 +24,7 @@ public class GameState implements Serializable {
     private List<GameItem> unidades = new ArrayList<>();
     private double valorClique;
     private List<Upgrade> upgradesDisponiveis = new ArrayList<>();
-    private double totalCookiesHistorico; // Não diminui quando você compra algo
+    private double totalCookiesHistorico; // para conquistas
     private List<Achievement> conquistas = new ArrayList<>();
 
     
@@ -48,7 +48,7 @@ public class GameState implements Serializable {
     }
    
     public double getProducaoPorSegundo() {
-        double producaoPorSegundo = 0.0;
+        double producaoPorSegundo = 1.0;
         
         for (GameItem u : this.unidades ) {
             producaoPorSegundo += u.getProducaoTotal();
@@ -93,7 +93,6 @@ public class GameState implements Serializable {
     
     private void verificarConquistas() {
         for (Achievement c : conquistas) {
-            // Se o método retornar true, significa que acabou de desbloquear
             if (c.verificarDesbloqueio(this.totalCookiesHistorico)) {
                 System.out.println("Nova Conquista Desbloqueada: " + c.getNome());
                 // Aqui você pode disparar um popup na tela do jogador!

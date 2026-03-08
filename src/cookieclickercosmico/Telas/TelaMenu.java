@@ -4,16 +4,23 @@
  */
 package cookieclickercosmico.Telas;
 
+import cookieclickercosmico.GameState;
+import cookieclickercosmico.MainFrame;
+import cookieclickercosmico.componentes.BotaoRedondo;
+
+
 /**
  *
  * @author sowbo
  */
 public class TelaMenu extends javax.swing.JPanel {
+    
+    private GameState estado; 
+    private MainFrame telaPrincipal;
 
-    /**
-     * Creates new form TelaMenu
-     */
-    public TelaMenu() {
+    public TelaMenu(GameState estado, MainFrame telaPrincipal) {
+        this.estado = estado;
+        this.telaPrincipal = telaPrincipal;
         initComponents();
     }
 
@@ -26,19 +33,53 @@ public class TelaMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        JOGAR = new BotaoRedondo("JOGAR");
+
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("COSMIC COOKIE FACTORY");
+
+        JOGAR.setBackground(new java.awt.Color(0, 0, 0));
+        JOGAR.setForeground(new java.awt.Color(255, 255, 255));
+        JOGAR.setText("JOGAR");
+        JOGAR.addActionListener(this::JOGARActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JOGAR)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JOGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JOGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JOGARActionPerformed
+        telaPrincipal.iniciarJogo();
+    }//GEN-LAST:event_JOGARActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JOGAR;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

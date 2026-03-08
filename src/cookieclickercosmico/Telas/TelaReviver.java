@@ -4,16 +4,18 @@
  */
 package cookieclickercosmico.Telas;
 
+import cookieclickercosmico.GameState;
+
 /**
  *
  * @author sowbo
  */
 public class TelaReviver extends javax.swing.JPanel {
 
-    /**
-     * Creates new form TelaReviver
-     */
-    public TelaReviver() {
+    private GameState estado; // Variável para guardar o motor do jogo
+
+    public TelaReviver(GameState estado) {
+        this.estado = estado;
         initComponents();
     }
 

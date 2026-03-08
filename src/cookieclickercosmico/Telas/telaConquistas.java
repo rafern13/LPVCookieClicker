@@ -4,16 +4,18 @@
  */
 package cookieclickercosmico.Telas;
 
+import cookieclickercosmico.GameState;
+
 /**
  *
  * @author sowbo
  */
 public class TelaConquistas extends javax.swing.JPanel {
 
-    /**
-     * Creates new form TelaInicio
-     */
-    public TelaConquistas() {
+    private GameState estado; // Variável para guardar o motor do jogo
+
+    public TelaConquistas(GameState estado) {
+        this.estado = estado;
         initComponents();
     }
 

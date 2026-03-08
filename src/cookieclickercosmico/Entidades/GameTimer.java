@@ -9,6 +9,7 @@ import cookieclickercosmico.MainFrame;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 public class GameTimer {
     private Timer timer;
@@ -39,9 +40,10 @@ public class GameTimer {
     // A mágica acontece aqui a cada segundo
     private void processarUmSegundo() {
         double producaoGeral = estadoDoJogo.getProducaoPorSegundo();
+       // System.out.println(producaoGeral);
         
         estadoDoJogo.adicionarCookies(producaoGeral);
         
-        //telaPrincipal.atualizarTextos();
+        telaPrincipal.atualizarTextos();
     }
 }

@@ -1,8 +1,9 @@
 package cookieclickercosmico.Entidades;
 
 import cookieclickercosmico.GameState;
+import java.io.Serializable;
 
-public class Upgrade {
+public class Upgrade implements Serializable {
     private String nome;
     private String descricao;
     private double custo;

@@ -4,13 +4,15 @@
  */
 package cookieclickercosmico.Entidades;
 
+import java.io.Serializable;
 
-public class GameItem {
+
+public class GameItem implements Serializable {
     private String nome;
     private double custoBase;
     private double producaoBase;
-    private int quantidade; // Substitui o contador static
-
+    private int quantidade;
+    
     public GameItem(String nome, double custoBase, double producaoBase) {
         this.nome = nome;
         this.custoBase = custoBase;
@@ -19,7 +21,6 @@ public class GameItem {
     }
 
     public double getCustoAtual() {
-        // Fórmula de progressão exponencial sugerida para o gênero [cite: 61, 62]
         return custoBase * Math.pow(1.15, quantidade);
     }
 

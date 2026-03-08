@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/CookieClickerCosmico.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/MainFrame.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/GameState.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/Telas/TelaInicio.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/Telas/TelaMenu.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/Telas/TelaLoja.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/Telas/TelaPerfil.java</file>
-            <file>file:/C:/Users/sowbo/OneDrive/Documentos/NetBeansProjects/CookieClickerCosmico/src/cookieclickercosmico/Telas/TelaReviver.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/MainFrame.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/GameState.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/Entidades/GameItem.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/Entidades/Upgrade.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/SaveManager.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/Telas/TelaLoja.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/Telas/TelaReviver.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/Telas/TelaConquistas.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/Entidades/Achievement.java</file>
+            <file>file:/C:/Users/Rafael/Documents/Faculdade/LPV/LPVCookieClicker/src/cookieclickercosmico/CookieClickerCosmico.java</file>
         </group>
     </open-files>
 </project-private>
