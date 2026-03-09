@@ -79,7 +79,7 @@ public class GameState implements Serializable {
         upgradesDisponiveis.add(new UpgradeOPoderDeSi());        
         
         conquistas.add(new Achievement("Confeiteiro de mão cheia", "Prepare 100.000 cookies!", 100000));
-        conquistas.add(new Achievement("Magnata do Biscoito", "Produza 1.000.000 de cookies no total!", 1000000));
+        conquistas.add(new Achievement("Magnata do Biscoito", "Tenha um montante total de 1.000.000 de cookies!", 1000000));
         conquistas.add(new Achievement("O Início", "Prepare seus primeiros 100 cookies!", 100));
         conquistas.add(new Achievement("Velocidade da Luz", "Alcance uma produção de 100 cookies por segundo.", 0));
         conquistas.add(new Achievement("O Renascimento", "Evolua suas indústrias e comece um Novo Jogo+.", 0));
