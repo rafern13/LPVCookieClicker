@@ -79,8 +79,10 @@ public class GameState implements Serializable {
         upgradesDisponiveis.add(new UpgradeOPoderDeSi());        
         
         conquistas.add(new Achievement("Confeiteiro de mão cheia", "Prepare 100.000 cookies!", 100000));
+        conquistas.add(new Achievement("Magnata do Biscoito", "Produza 1.000.000 de cookies no total!", 1000000));
         conquistas.add(new Achievement("O Início", "Prepare seus primeiros 100 cookies!", 100));
         conquistas.add(new Achievement("Velocidade da Luz", "Alcance uma produção de 100 cookies por segundo.", 0));
+        conquistas.add(new Achievement("O Renascimento", "Evolua suas indústrias e comece um Novo Jogo+.", 0));
     }
     
     // Sistema de Nível
@@ -128,6 +130,13 @@ public class GameState implements Serializable {
                 if (atual.getNome().equals(ganha.getNome())) {
                     atual.setDesbloqueada(true);
                 }
+            }
+        }
+        
+        // Desbloqueia a conquista de Renascimento (afinal, acabou de reviver)
+        for (Achievement c : this.conquistas) {
+            if (c.getNome().equals("O Renascimento")) {
+                c.setDesbloqueada(true);
             }
         }
     }
@@ -304,6 +313,9 @@ public class GameState implements Serializable {
                     c.setDesbloqueada(true);
                     System.out.println("Nova Conquista Desbloqueada: " + c.getNome());
                 }
+            } else if (c.getNome().equals("O Renascimento")) {
+                // Esta conquista só destrava lá dentro do reiniciarParaPrestigio(), então pulamos ela da checagem automática de Cookies
+                continue; 
             } else {
                 if (c.verificarDesbloqueio(this.totalCookiesHistorico)) {
                     System.out.println("Nova Conquista Desbloqueada: " + c.getNome());

@@ -17,6 +17,7 @@ public class MainFrame extends javax.swing.JFrame {
     private cookieclickercosmico.Telas.TelaInicio telaInicio;
     private cookieclickercosmico.Telas.TelaConquistas telaConquistas;
     private cookieclickercosmico.Telas.TelaPerfil telaPerfil;
+    private cookieclickercosmico.Telas.TelaLoja telaLoja;
     private javax.swing.JLabel lblCookiesPersistente; // O novo contador de cookies
     private javax.swing.JPanel painelContadorPersistente; // Referência para mostrar/esconder
     /**
@@ -34,7 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         // 3. Adiciona as cartas
         telaInicio = new cookieclickercosmico.Telas.TelaInicio(this.estado); 
-        cookieclickercosmico.Telas.TelaLoja telaLoja = new cookieclickercosmico.Telas.TelaLoja(this.estado, this);
+        telaLoja = new cookieclickercosmico.Telas.TelaLoja(this.estado, this);
         telaConquistas = new cookieclickercosmico.Telas.TelaConquistas(this.estado);
         telaPerfil = new cookieclickercosmico.Telas.TelaPerfil(this.estado);
         cookieclickercosmico.Telas.TelaMenu telaMenu = new cookieclickercosmico.Telas.TelaMenu(this.estado, this);
@@ -183,11 +184,10 @@ public class MainFrame extends javax.swing.JFrame {
         if (this.lblCookiesPersistente != null) {
             this.lblCookiesPersistente.setText(String.format("Biscoitos: %.0f", estado.getTotalCookies()));
         }
-        
-        // Mais pra frente, você vai adicionar a Loja aqui também!
-        // if (this.telaLoja != null) {
-        //     this.telaLoja.atualizarBotoesDeCompra();
-        // }
+        // Atualiza a Loja
+        if (this.telaLoja != null) {
+            this.telaLoja.atualizarTela();
+        }
     }
     
     /**

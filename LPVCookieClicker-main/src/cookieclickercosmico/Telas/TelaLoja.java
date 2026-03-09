@@ -127,6 +127,12 @@ public class TelaLoja extends javax.swing.JPanel {
         carregarLojaUnidades();
     }   
     
+    public void atualizarTela() {
+        carregarLojaUnidades();
+        carregarLojaCliques();
+        carregarLojaUpgrades();
+    }
+    
     public void carregarLojaUnidades() {
         // 1. Limpa a aba de unidades
         painelContainerUnidades.removeAll();
